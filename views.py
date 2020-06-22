@@ -14,7 +14,7 @@ from qa.models import Question
 
 
 class SearchListView(LoginRequiredMixin, ListView):
-
+    
     model = News
     template_name = "answers.html"
 
@@ -45,17 +45,16 @@ class SearchListView(LoginRequiredMixin, ListView):
         return context
 
 
-# For autocomplete suggestions
+# Add data to lists
 @login_required
 @ajax_required
 def get_suggestions(request):
-    # Convert users, articles, questions objects into list to be
-    # represented as a single list.
     query = request.GET.get("test_session", "")
     users = list()
     articles = list()
     questions = list()
     
+    #Incomplete, more to follow up
     data_retrieved = users
     data_retrieved.extend(articles)
     data_retrieved.extend(questions)
